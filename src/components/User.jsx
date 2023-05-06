@@ -7,9 +7,11 @@ const fetchUsers = async () => {
 
 function User() {
 
-  const { data, isLoading } = useQuery('users', fetchUsers);
+  const { data, isLoading, isError, error } = useQuery('users', fetchUsers);
 
   if (isLoading) return (<div>Loading...</div>);
+
+  if (isError) return (<span>Error: {error.message}</span>)
 
   return (
     <div>
